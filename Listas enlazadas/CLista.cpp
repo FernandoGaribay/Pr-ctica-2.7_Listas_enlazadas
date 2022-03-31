@@ -14,63 +14,64 @@ CLista::~CLista() {
     }
 }
 
-void CLista::InsertarInicio(int v) {
+void CLista::InsertarInicio(CLibro libro) {
     CNodo* aux;
     if (ListaVacia()) {
-        aux = new CNodo(v, primero);
+        aux = new CNodo(libro, primero);
         primero = aux;
     }
     else {
-        aux = new CNodo(v, primero->siguiente);
+        aux = new CNodo(libro, primero->siguiente);
         primero = aux;
     }
 }
 
-void CLista::InsertarFinal(int v) {
+void CLista::InsertarFinal(CLibro libro) {
     CNodo* aux = Ultimo();
-    aux->siguiente = new CNodo(v, NULL);
+    aux->siguiente = new CNodo(libro, NULL);
 }
 
-void CLista::Insertar(int v) {
+void CLista::Insertar(CLibro libro) {
     CNodo* aux;
     if (ListaVacia()) {
-        aux = new CNodo(v, primero);
+        aux = new CNodo(libro, primero);
         primero = aux;
     }
     else {
         aux = Ultimo();
-        aux->siguiente = new CNodo(v, NULL);
+        aux->siguiente = new CNodo(libro, NULL);
     }
 
 }
 
-void CLista::InsertarAntesDe(int v, int z) {
+void CLista::InsertarAntesDe(CLibro libro, CLibro z) {
     CNodo* anterior;
-    // Buscar el nodo de valor de z
     anterior = primero;
-    // Avanzamos hasta encontrar el elemento
-    while (anterior->siguiente && anterior->siguiente->valor != z) {
+
+    while (anterior->siguiente && anterior->siguiente->valor.getClave() != z.getClave()) {
         anterior = anterior->siguiente;
     }
-    // Creamos un nuevo nodo después del nodo anterior, y cuyo siguiente
-    // es el siguiente del anterior
-    anterior->siguiente = new CNodo(v, anterior->siguiente);
+
+    anterior->siguiente = new CNodo(libro, anterior->siguiente);
 }
 
-void CLista::Borrar(int v) {
+void CLista::Borrar(CLibro libro) {
     CNodo* anterior, * nodo;
 
     nodo = primero;
     anterior = NULL;
-    while (nodo && nodo->valor != v) {
+
+    while (nodo && nodo->valor.getClave() != libro.getClave()) {
         anterior = nodo;
         nodo = nodo->siguiente;
     }
-    if (!nodo || nodo->valor != v) return;
-    else { // Borrar el nodo
-        if (!anterior) // Primer elemento
+
+    if (!nodo || nodo->valor.getClave() != libro.getClave()) 
+        return;
+    else { 
+        if (!anterior) 
             primero = nodo->siguiente;
-        else  // un elemento cualquiera
+        else  
             anterior->siguiente = nodo->siguiente;
         delete nodo;
     }
@@ -81,7 +82,7 @@ void CLista::Mostrar() {
 
     aux = primero;
     while (aux) {
-        cout << aux->valor << endl;
+        aux->valor.mostrarDatos();
         aux = aux->siguiente;
     }
     cout << endl;

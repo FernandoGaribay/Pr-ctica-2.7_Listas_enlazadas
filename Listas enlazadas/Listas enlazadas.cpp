@@ -9,25 +9,34 @@ using namespace std;
 int main(int argc, const char* argv[]) {
     CLista lista;
 
-    CLibro libro(1, "Eso Tilin", "Fernando");
-    libro.mostrarDatos();
+    // Se crean los objetos de la clase "CLibro"
+    CLibro libro1(1, "El principito", "Antoine de Saint-Exupery");
+    CLibro libro2(2, "Coraline", "Neil Gaiman");
+    CLibro libro3(3, "El caballero de la armadura oxidada", "Robert Fisher");
+    CLibro libro4(4, "Rebelion en la granja", "George Orwell");
 
-    lista.Insertar(1);
-    lista.Insertar(2);
-    lista.Insertar(3);
+    //Se insertan los objetosa la lista
+    lista.Insertar(libro1);
+    lista.Insertar(libro2);
+    lista.Insertar(libro3);
 
+    cout << "lista.Mostrar(); \n" << endl;
     lista.Mostrar();
+
+    //Borramos el objeto "libro2" de la lista
+    cout << "lista.Borrar(libro2);" << endl;
+    lista.Borrar(libro2);
+
+    cout << "lista.Mostrar(); \n" << endl;
+    lista.Mostrar();
+
+    //Insertamos el objeto "libro4" antes del "libro3" (Donde anteriormente estaba "libro2")
+    cout << "lista.InsertarAntesDe(libro4, libro3);" << endl;
+    lista.InsertarAntesDe(libro4, libro3);
+
+    cout << "lista.Mostrar(); \n" << endl;
+    lista.Mostrar();
+    
 
     return 0;
 }
-
-/*
-    lista.InsertarInicio(5);
-    lista.InsertarInicio(6);
-    lista.InsertarFinal(8);
-    lista.InsertarFinal(9);
-    lista.Mostrar();
-    lista.InsertarAntesDe(10, 8);
-    lista.Borrar(8);
-    lista.Borrar(5);
-*/

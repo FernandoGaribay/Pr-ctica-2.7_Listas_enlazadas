@@ -41,4 +41,5 @@ void CLibro::mostrarDatos() {
 	cout << "Clave: " << getClave() << endl;
 	cout << "Titulo: " << getTitulo() << endl;
 	cout << "Autor: " << getAutor() << endl;
+	cout << endl;
 }

@@ -1,15 +1,16 @@
 #pragma once
 #include "CNodo.h"
+#include "CLibro.h"
 
 class CLista {
 public:
     CLista();
     ~CLista();
-    void InsertarInicio(int v);
-    void InsertarFinal(int v);
-    void Insertar(int v);
-    void InsertarAntesDe(int v, int z);
-    void Borrar(int v);
+    void InsertarInicio(CLibro libro);
+    void InsertarFinal(CLibro libro);
+    void Insertar(CLibro libro);
+    void InsertarAntesDe(CLibro libro, CLibro z);
+    void Borrar(CLibro libro);
     bool ListaVacia();
     void Mostrar();
     CNodo* Ultimo();

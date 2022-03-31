@@ -1,7 +1,7 @@
 #include "CNodo.h"
 
-CNodo::CNodo(int v, CNodo* sig = NULL)
+CNodo::CNodo(CLibro libro, CNodo* sig = NULL)
 {
-	valor = v;
+	valor = libro;
 	siguiente = sig;
 }
