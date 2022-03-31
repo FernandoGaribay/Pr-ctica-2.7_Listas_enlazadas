@@ -6,9 +6,9 @@ using namespace std;
 int main(int argc, const char* argv[]) {
     CLista lista;
 
-    lista.InsertarInicio(9);
-    lista.InsertarFinal(10);
-    lista.InsertarFinal(11);
+    lista.Insertar(1);
+    lista.Insertar(2);
+    lista.Insertar(3);
 
     lista.Mostrar();
 

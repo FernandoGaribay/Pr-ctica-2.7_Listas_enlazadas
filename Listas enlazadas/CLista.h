@@ -7,6 +7,7 @@ public:
     ~CLista();
     void InsertarInicio(int v);
     void InsertarFinal(int v);
+    void Insertar(int v);
     void InsertarAntesDe(int v, int z);
     void Borrar(int v);
     bool ListaVacia();

@@ -31,6 +31,19 @@ void CLista::InsertarFinal(int v) {
     aux->siguiente = new CNodo(v, NULL);
 }
 
+void CLista::Insertar(int v) {
+    CNodo* aux;
+    if (ListaVacia()) {
+        aux = new CNodo(v, primero);
+        primero = aux;
+    }
+    else {
+        aux = Ultimo();
+        aux->siguiente = new CNodo(v, NULL);
+    }
+
+}
+
 void CLista::InsertarAntesDe(int v, int z) {
     CNodo* anterior;
     // Buscar el nodo de valor de z
