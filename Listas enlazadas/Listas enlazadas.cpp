@@ -1,10 +1,16 @@
 #include <iostream>
+#include <string>
+
 #include "CLista.h"
+#include "CLibro.h"
 
 using namespace std;
 
 int main(int argc, const char* argv[]) {
     CLista lista;
+
+    CLibro libro(1, "Eso Tilin", "Fernando");
+    libro.mostrarDatos();
 
     lista.Insertar(1);
     lista.Insertar(2);

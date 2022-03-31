@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CLibro.cpp" />
     <ClCompile Include="CLista.cpp" />
     <ClCompile Include="CNodo.cpp" />
     <ClCompile Include="Listas enlazadas.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CLibro.h" />
     <ClInclude Include="CLista.h" />
     <ClInclude Include="CNodo.h" />
   </ItemGroup>
