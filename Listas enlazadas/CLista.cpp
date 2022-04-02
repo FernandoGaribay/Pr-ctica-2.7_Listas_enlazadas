@@ -14,7 +14,7 @@ CLista::~CLista() {
     }
 }
 
-void CLista::InsertarInicio(CLibro libro) {
+void CLista::InsertarInicio(CLibro* libro) {
     CNodo* aux;
     if (ListaVacia()) {
         aux = new CNodo(libro, primero);
@@ -26,12 +26,12 @@ void CLista::InsertarInicio(CLibro libro) {
     }
 }
 
-void CLista::InsertarFinal(CLibro libro) {
+void CLista::InsertarFinal(CLibro* libro) {
     CNodo* aux = Ultimo();
     aux->siguiente = new CNodo(libro, NULL);
 }
 
-void CLista::Insertar(CLibro libro) {
+void CLista::Insertar(CLibro* libro) {
     CNodo* aux;
     if (ListaVacia()) {
         aux = new CNodo(libro, primero);
@@ -42,49 +42,100 @@ void CLista::Insertar(CLibro libro) {
         aux->siguiente = new CNodo(libro, NULL);
     }
 
+    cout << "\nLibro agregado." << endl;
 }
 
-void CLista::InsertarAntesDe(CLibro libro, CLibro z) {
+void CLista::InsertarAntesDe(CLibro* libro, int z) {
     CNodo* anterior;
     anterior = primero;
 
-    while (anterior->siguiente && anterior->siguiente->valor.getClave() != z.getClave()) {
+    while (anterior->siguiente && anterior->siguiente->valor->getClave() != z) {
         anterior = anterior->siguiente;
     }
 
     anterior->siguiente = new CNodo(libro, anterior->siguiente);
 }
 
-void CLista::Borrar(CLibro libro) {
-    CNodo* anterior, * nodo;
+CNodo* CLista::buscarNodo(int z) {
+    CNodo* aux;
+
+    aux = primero;
+    if (primero != NULL) {
+        while (aux != NULL) {
+            if (aux->valor->getClave() == z) {
+                return aux;
+            }
+            aux = aux->siguiente;
+        }
+        return NULL;
+    }
+    else {
+        return NULL;
+    }
+}
+
+void CLista::modificarNodo(CLibro* libro, int z) {
+    CNodo* aux = buscarNodo(z);
+
+    if (aux != NULL) {
+        aux->valor = libro;
+        cout << "\nLibro modificado." << endl;
+    }
+    else {
+        cout << "\nEl nodo no fue encontrado." << endl;
+    }
+}
+
+void CLista::visualizarNodo(int z) {
+    CNodo* aux = buscarNodo(z);
+
+    if (aux != NULL) {
+        aux->valor->mostrarDatos();
+    }
+    else {
+        cout << "\nEl nodo no fue encontrado." << endl;
+    }
+}
+
+void CLista::Borrar(int clave) {
+    CNodo* anterior, *nodo;
 
     nodo = primero;
     anterior = NULL;
 
-    while (nodo && nodo->valor.getClave() != libro.getClave()) {
+    while (nodo && nodo->valor->getClave() != clave) {
         anterior = nodo;
         nodo = nodo->siguiente;
     }
 
-    if (!nodo || nodo->valor.getClave() != libro.getClave()) 
+    if (!nodo || nodo->valor->getClave() != clave) {
+        cout << "\nEl nodo no fue encontrado." << endl;
         return;
+    }
     else { 
         if (!anterior) 
             primero = nodo->siguiente;
         else  
             anterior->siguiente = nodo->siguiente;
         delete nodo;
+
     }
 }
 
 void CLista::Mostrar() {
     CNodo* aux;
-
     aux = primero;
-    while (aux) {
-        aux->valor.mostrarDatos();
-        aux = aux->siguiente;
+
+    if (aux != NULL) {
+        while (aux) {
+            aux->valor->mostrarDatos();
+            aux = aux->siguiente;
+        }
     }
+    else {
+        cout << "La lista esta vacia." << endl;
+    }
+
     cout << endl;
 }
 

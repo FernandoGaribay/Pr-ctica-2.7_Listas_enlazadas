@@ -6,10 +6,10 @@ using namespace std;
 
 class CNodo {
 public:
-    CNodo(CLibro libro, CNodo* sig);
+    CNodo(CLibro* libro, CNodo* sig);
 
 private:
-    CLibro valor;
+    CLibro* valor;
     CNodo* siguiente;
 
     friend class CLista;
