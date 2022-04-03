@@ -60,8 +60,8 @@ void CLista::InsertarAntesDe(CLibro* libro, int z) {
 CNodo* CLista::buscarNodo(int z) {
     CNodo* aux;
 
-    aux = primero;
-    if (primero != NULL) {
+    if (!ListaVacia()) {
+        aux = primero;
         while (aux != NULL) {
             if (aux->valor->getClave() == z) {
                 return aux;
@@ -125,9 +125,9 @@ void CLista::Borrar(int clave) {
 
 void CLista::Mostrar() {
     CNodo* aux;
-    aux = primero;
 
-    if (aux != NULL) {
+    if (!ListaVacia()) {
+        aux = primero;
         while (aux) {
             aux->valor->mostrarDatos();
             aux = aux->siguiente;
