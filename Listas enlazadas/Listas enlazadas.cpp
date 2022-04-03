@@ -8,8 +8,16 @@
 using namespace std;
 
 void mostrarMenu(char& opc);
+void opcion1(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista);
+void opcion2(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista);
+void opcion3(int& clave, CLista& lista);
+void opcion4(int& clave, CLista& lista);
+void opcion5(CLista& lista);
+void opcion6(CLista& lista);
+void Opcion7(bool& r);
 
-int main(void) {
+int main(void) 
+{
     CLibro* libro = new CLibro();
     CLista lista;
 
@@ -25,85 +33,25 @@ int main(void) {
 
         switch (opc) {
         case '1':
-            system("clear");
-            cout << "INTRODUCIR LIBRO EN LA LISTA ----------------------\n" << endl;
-
-            cout << "Dijite la clave del libro: ";
-            cin >> clave;
-            cin.ignore();
-
-            cout << "Dijite el titulo del libro: ";
-            getline(cin, titulo);
-
-            cout << "Dijite el autor del libro: ";
-            getline(cin, autor);
-
-            libro = new CLibro(clave, titulo, autor);
-            lista.Insertar(libro);
-
-            system("pause");
+            opcion1(clave, titulo, autor, libro, lista);
             break;
         case '2':
-            system("clear");
-            cout << "MODIFICAR LIBRO -------------------------------- - \n" << endl;
-
-            cout << "Dijite la clave del libro a modificar: ";
-            cin >> clave;
-            cin.ignore();
-
-            cout << "Dijite el titulo del libro: ";
-            getline(cin, titulo);
-
-            cout << "Dijite el autor del libro: ";
-            getline(cin, autor);
-
-            libro = new CLibro(clave, titulo, autor);
-
-            lista.modificarNodo(libro, clave);
-
-            system("pause");
+            opcion2(clave, titulo, autor, libro, lista);
             break;
         case '3':
-            system("clear");
-            cout << "VISUALIZAR LIBRO ------------------------------- - \n" << endl;
-
-            cout << "Dijite la clave del libro a visualizar: ";
-            cin >> clave;
-
-            lista.visualizarNodo(clave);
-
-            system("pause");
+            opcion3(clave, lista);
             break;
         case '4':
-            system("clear");
-            cout << "BORRAR LIBRO ----------------------------------- - \n" << endl;
-
-            cout << "Dijite la clave del libro: ";
-            cin >> clave;
-
-            lista.Borrar(clave);
-
-            system("pause");
+            opcion4(clave, lista);
             break;
         case '5':
-            system("clear");
-            cout << "BORRAR LISTA DE NODOS ---------------------------- \n" << endl;
-
-            lista.~CLista();
-
-            cout << "\Lista de libros borrada." << endl;
-            system("pause");
+            opcion5(lista);
             break;
         case '6':
-            system("clear");
-            cout << "VISUALIZAR TODOS LOS LIBROS -----------------------\n" << endl;
-            lista.Mostrar();
-            system("pause");
+            opcion6(lista);
             break;
         case '7':
-            r = false;
-            cout << "\nPrograma finalizado." << endl;
-            system("pause");
+            Opcion7(r);
             break;
         default:
             cout << "\nOpcion invalida." << endl;
@@ -112,6 +60,100 @@ int main(void) {
     } while (r);
 
     return 0;
+}
+
+void Opcion7(bool& r)
+{
+    r = false;
+    cout << "\nPrograma finalizado." << endl;
+    system("pause");
+}
+
+void opcion6(CLista& lista)
+{
+    system("clear");
+    cout << "VISUALIZAR TODOS LOS LIBROS -----------------------\n" << endl;
+    lista.Mostrar();
+    system("pause");
+}
+
+void opcion5(CLista& lista)
+{
+    system("clear");
+    cout << "BORRAR LISTA DE NODOS ---------------------------- \n" << endl;
+
+    lista.~CLista();
+
+    system("pause");
+}
+
+void opcion4(int& clave, CLista& lista)
+{
+    system("clear");
+    cout << "BORRAR LIBRO ----------------------------------- - \n" << endl;
+
+    cout << "Dijite la clave del libro: ";
+    cin >> clave;
+
+    lista.Borrar(clave);
+
+    system("pause");
+}
+
+void opcion3(int& clave, CLista& lista)
+{
+    system("clear");
+    cout << "VISUALIZAR LIBRO ------------------------------- - \n" << endl;
+
+    cout << "Dijite la clave del libro a visualizar: ";
+    cin >> clave;
+
+    lista.visualizarNodo(clave);
+
+    system("pause");
+}
+
+void opcion2(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista)
+{
+    system("clear");
+    cout << "MODIFICAR LIBRO -------------------------------- - \n" << endl;
+
+    cout << "Dijite la clave del libro a modificar: ";
+    cin >> clave;
+    cin.ignore();
+
+    cout << "Dijite el titulo del libro: ";
+    getline(cin, titulo);
+
+    cout << "Dijite el autor del libro: ";
+    getline(cin, autor);
+
+    libro = new CLibro(clave, titulo, autor);
+
+    lista.modificarNodo(libro, clave);
+
+    system("pause");
+}
+
+void opcion1(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista)
+{
+    system("clear");
+    cout << "INTRODUCIR LIBRO EN LA LISTA ----------------------\n" << endl;
+
+    cout << "Dijite la clave del libro: ";
+    cin >> clave;
+    cin.ignore();
+
+    cout << "Dijite el titulo del libro: ";
+    getline(cin, titulo);
+
+    cout << "Dijite el autor del libro: ";
+    getline(cin, autor);
+
+    libro = new CLibro(clave, titulo, autor);
+    lista.Insertar(libro);
+
+    system("pause");
 }
 
 void mostrarMenu(char& opc)
@@ -129,52 +171,3 @@ void mostrarMenu(char& opc)
     cout << "\n- Dijite una opcion: ";
     cin >> opc;
 }
-
-/*
-// Se crean los objetos de la clase "CLibro"
-    CLibro libro1(1, "El principito", "Antoine de Saint-Exupery");
-    CLibro libro2(2, "Coraline", "Neil Gaiman");
-    CLibro libro3(3, "El caballero de la armadura oxidada", "Robert Fisher");
-    CLibro libro4(4, "Rebelion en la granja", "George Orwell");
-
-    //Se insertan los objetosa la lista
-    lista.Insertar(libro1);
-    lista.Insertar(libro2);
-    lista.Insertar(libro3);
-
-    cout << "lista.Mostrar(); \n" << endl;
-    lista.Mostrar();
-
-    //Borramos el objeto "libro2" de la lista
-    cout << "lista.Borrar(libro2);" << endl;
-    lista.Borrar(libro2);
-
-    cout << "lista.Mostrar(); \n" << endl;
-    lista.Mostrar();
-
-    //Insertamos el objeto "libro4" antes del "libro3" (Donde anteriormente estaba "libro2")
-    cout << "lista.InsertarAntesDe(libro4, libro3);" << endl;
-    lista.InsertarAntesDe(libro4, libro3);
-
-    cout << "lista.Mostrar(); \n" << endl;
-    lista.Mostrar();
-*/
-
-
-/*
-int clave = 1;
-string titulo = "El ete setch";
-string autor = "fernando";
-
-int clave2 = 2;
-string titulo2 = "El pepe";
-string autor2 = "marcotroll";
-
-CLibro* libro = new CLibro(clave, titulo, autor);
-lista.Insertar(libro);
-
-libro = new CLibro(clave2, titulo2, autor2);
-lista.Insertar(libro);
-
-lista.Mostrar();
-*/

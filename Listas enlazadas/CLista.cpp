@@ -12,6 +12,7 @@ CLista::~CLista() {
         primero = primero->siguiente;
         delete aux;
     }
+    cout << "\Lista de libros borrada." << endl;
 }
 
 void CLista::InsertarInicio(CLibro* libro) {
