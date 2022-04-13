@@ -8,13 +8,13 @@
 using namespace std;
 
 void mostrarMenu(char& opc);
-void opcion1(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista);
-void opcion2(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista);
-void opcion3(int& clave, CLista& lista);
-void opcion4(int& clave, CLista& lista);
-void opcion5(CLista& lista);
-void opcion6(CLista& lista);
-void Opcion7(bool& r);
+void introducirLibro(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista);
+void modificarLibro(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista);
+void visualizarLibro(int& clave, CLista& lista);
+void borrarLibro(int& clave, CLista& lista);
+void borrarLista(CLista& lista);
+void visualizarLista(CLista& lista);
+void salir(bool& r);
 
 int main(void) 
 {
@@ -33,25 +33,25 @@ int main(void)
 
         switch (opc) {
         case '1':
-            opcion1(clave, titulo, autor, libro, lista);
+            introducirLibro(clave, titulo, autor, libro, lista);
             break;
         case '2':
-            opcion2(clave, titulo, autor, libro, lista);
+            modificarLibro(clave, titulo, autor, libro, lista);
             break;
         case '3':
-            opcion3(clave, lista);
+            visualizarLibro(clave, lista);
             break;
         case '4':
-            opcion4(clave, lista);
+            borrarLibro(clave, lista);
             break;
         case '5':
-            opcion5(lista);
+            borrarLista(lista);
             break;
         case '6':
-            opcion6(lista);
+            visualizarLista(lista);
             break;
         case '7':
-            Opcion7(r);
+            salir(r);
             break;
         default:
             cout << "\nOpcion invalida." << endl;
@@ -62,14 +62,14 @@ int main(void)
     return 0;
 }
 
-void Opcion7(bool& r)
+void salir(bool& r)
 {
     r = false;
     cout << "\nPrograma finalizado." << endl;
     system("pause");
 }
 
-void opcion6(CLista& lista)
+void visualizarLista(CLista& lista)
 {
     system("clear");
     cout << "VISUALIZAR TODOS LOS LIBROS -----------------------\n" << endl;
@@ -77,7 +77,7 @@ void opcion6(CLista& lista)
     system("pause");
 }
 
-void opcion5(CLista& lista)
+void borrarLista(CLista& lista)
 {
     system("clear");
     cout << "BORRAR LISTA DE NODOS ---------------------------- \n" << endl;
@@ -87,7 +87,7 @@ void opcion5(CLista& lista)
     system("pause");
 }
 
-void opcion4(int& clave, CLista& lista)
+void borrarLibro(int& clave, CLista& lista)
 {
     system("clear");
     cout << "BORRAR LIBRO ----------------------------------- - \n" << endl;
@@ -100,7 +100,7 @@ void opcion4(int& clave, CLista& lista)
     system("pause");
 }
 
-void opcion3(int& clave, CLista& lista)
+void visualizarLibro(int& clave, CLista& lista)
 {
     system("clear");
     cout << "VISUALIZAR LIBRO ------------------------------- - \n" << endl;
@@ -113,7 +113,7 @@ void opcion3(int& clave, CLista& lista)
     system("pause");
 }
 
-void opcion2(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista)
+void modificarLibro(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista)
 {
     system("clear");
     cout << "MODIFICAR LIBRO -------------------------------- - \n" << endl;
@@ -135,7 +135,7 @@ void opcion2(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& 
     system("pause");
 }
 
-void opcion1(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista)
+void introducirLibro(int& clave, string& titulo, string& autor, CLibro*& libro, CLista& lista)
 {
     system("clear");
     cout << "INTRODUCIR LIBRO EN LA LISTA ----------------------\n" << endl;
